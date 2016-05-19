@@ -36,16 +36,6 @@ object MyModule {
     acc
   }
 
-  // Exercise 1: Write a function to compute the nth fibonacci number
-
-  def fib(n: Int): Int = {
-    def recur(previous: Int, current: Int, n: Int): Int = {
-      if (n == 0) previous
-      else recur(current, previous + current, n - 1)
-    }
-    recur(0, 1, n)
-  }
-
   // This definition and `formatAbs` are very similar..
   private def formatFactorial(n: Int) = {
     val msg = "The factorial of %d is %d."
@@ -69,17 +59,6 @@ object FormatAbsAndFactorial {
   def main(args: Array[String]): Unit = {
     println(formatResult("absolute value", -42, abs))
     println(formatResult("factorial", 7, factorial))
-  }
-}
-
-object TestFib {
-
-  import MyModule._
-
-  // test implementation of `fib`
-  def main(args: Array[String]): Unit = {
-    println("Expected: 0, 1, 1, 2, 3, 5, 8")
-    println("Actual:   %d, %d, %d, %d, %d, %d, %d".format(fib(0), fib(1), fib(2), fib(3), fib(4), fib(5), fib(6)))
   }
 }
 
