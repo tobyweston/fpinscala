@@ -34,19 +34,6 @@ object MyModule {
     acc
   }
 
-  // Exercise 1: Write a function to compute the nth fibonacci number
-
-  // 0 and 1 are the first two numbers in the sequence,
-  // so we start the accumulators with those.
-  // At every iteration, we add the two numbers to get the next one.
-  def fib(n: Int): Int = {
-    @annotation.tailrec
-    def loop(n: Int, prev: Int, cur: Int): Int =
-      if (n == 0) prev
-      else loop(n - 1, cur, prev + cur)
-    loop(n, 0, 1)
-  }
-
   // This definition and `formatAbs` are very similar..
   private def formatFactorial(n: Int) = {
     val msg = "The factorial of %d is %d."
@@ -131,18 +118,6 @@ object PolymorphicFunctions {
     loop(0)
   }
 
-
-  // Exercise 2: Implement a polymorphic function to check whether
-  // an `Array[A]` is sorted
-  def isSorted[A](as: Array[A], gt: (A,A) => Boolean): Boolean = {
-    @annotation.tailrec
-    def go(n: Int): Boolean =
-      if (n >= as.length-1) true
-      else if (gt(as(n), as(n+1))) false
-      else go(n+1)
-
-    go(0)
-  }
 
   // Polymorphic functions are often so constrained by their type
   // that they only have one implementation! Here's an example:
