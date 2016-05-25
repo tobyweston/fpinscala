@@ -1,6 +1,6 @@
-package fpinscala
+package fpinscala.exercises
 
-import fpinscala.Exercise2._
+import fpinscala.exercises.Exercise2._
 
 /**
   * See [[fpinscala.gettingstarted.MyModule]]

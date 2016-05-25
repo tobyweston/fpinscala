@@ -1,4 +1,4 @@
-package fpinscala
+package fpinscala.exercises
 
 /**
   * See [[fpinscala.gettingstarted.MyModule]]
