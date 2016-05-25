@@ -1,12 +1,16 @@
 package fpinscala.exercises
 
+import fpinscala.exercises.Exercise4.uncurry
+
 /**
   * See [[fpinscala.gettingstarted.MyModule]]
   */
 object Exercise4 {
+
   // Exercise 4: Implement `uncurry`
-  def uncurry[A, B, C](f: A => B => C): (A, B) => C =
-    ???
+  def uncurry[A, B, C](f: A => B => C): (A, B) => C = {
+    (a, b) => f(a)(b)
+  }
 
   /*
   NB: There is a method on the `Function` object in the standard library,
@@ -17,5 +21,15 @@ object Exercise4 {
   we say that they are _isomorphic_ ("iso" = same; "morphe" = shape, form),
   a term we inherit from category theory.
   */
+
+}
+
+object Exercise4Test extends App {
+
+  val add: Int => Int => Int = a => b => a + b
+  assert(add(1)(1) == 2)
+
+  val uncurried: (Int, Int) => Int = uncurry(add)
+  assert(uncurried(1, 1) == 2)
 
 }
