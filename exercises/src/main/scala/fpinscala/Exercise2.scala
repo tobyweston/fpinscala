@@ -8,7 +8,7 @@ import fpinscala.Exercise2._
 object Exercise2 {
   // Exercise 2: Implement a polymorphic function to check whether an `Array[A]` is sorted
 
-  def isSorted[A](array: Array[A], ordered: (A, A) => Boolean): Boolean = {
+  def isSortedAlt[A](array: Array[A], ordered: (A, A) => Boolean): Boolean = {
     @annotation.tailrec
     def recur(n: Int): Boolean = {
       if (n == 1) true
@@ -19,14 +19,15 @@ object Exercise2 {
     recur(array.length - 1)
   }
 
-  def isSortedBroken[A](array: Array[A], ordered: (A, A) => Boolean): Boolean = {
+  def isSorted[A](array: Array[A], ordered: (A, A) => Boolean): Boolean = {
     @annotation.tailrec
-    def recur(first: A, tail: Array[A]): Boolean = {
-      if (!ordered(first, tail.head)) false
-      else recur(tail.head, tail.tail)
+    def recur(list: List[A]): Boolean = list match {
+      case Nil                                                => true
+      case first :: second :: tail if !ordered(first, second) => false
+      case _ :: tail                                          => recur(tail)
     }
 
-    recur(array.head, array.tail)
+    recur(array.toList)
   }
 
   // inspired by this function
@@ -46,6 +47,7 @@ object Exercise2Test extends App {
   println(findFirst(Array(1, 2, 3, 2, 5), (a: Int) => a > 3) + " position")
 
   assert(isSorted(Array(1, 2, 3, 4, 5), (a: Int, b: Int) => b > a))
+  assert(isSorted(Array(1), (a: Int, b: Int) => b > a))
   assert(!isSorted(Array(1, 2, 3, 4, 5), (a: Int, b: Int) => b < a))
   assert(!isSorted(Array(1, 3, 3, 4, 5), (a: Int, b: Int) => b > a))
 }
