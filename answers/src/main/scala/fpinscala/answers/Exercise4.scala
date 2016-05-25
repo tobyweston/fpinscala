@@ -1,4 +1,4 @@
-package fpinscala
+package fpinscala.answers
 
 /**
   * See [[fpinscala.gettingstarted.MyModule]]

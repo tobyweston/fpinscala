@@ -1,6 +1,6 @@
-package fpinscala
+package fpinscala.answers
 
-import fpinscala.Exercise2._
+import fpinscala.answers.Exercise2.isSorted
 
 /**
   * See [[fpinscala.gettingstarted.MyModule]]
