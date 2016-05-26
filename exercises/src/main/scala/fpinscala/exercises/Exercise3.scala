@@ -20,9 +20,9 @@ object Exercise3 {
 }
 
 object Exercise3Test extends App {
-  val add: (Int, Int) => Int = (a: Int, b: Int) => a + b
-  assert(add(1,1) == 2)
+  val add: (String, String) => String = (a: String, b: String) => a + b
+  assert(add("A", "B") == "AB")
 
-  val curried: (Int) => (Int) => Int = curry(add)
-  assert(curried(1)(1) == 2)
+  val curried: (String) => (String) => String = curry(add)
+  assert(curried("A")("B") == "AB")
 }

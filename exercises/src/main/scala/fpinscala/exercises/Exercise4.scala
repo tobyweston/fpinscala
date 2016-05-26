@@ -26,10 +26,10 @@ object Exercise4 {
 
 object Exercise4Test extends App {
 
-  val add: Int => Int => Int = a => b => a + b
-  assert(add(1)(1) == 2)
+  val add: String => String => String = a => b => a + b
+  assert(add("A")("B") == "AB")
 
-  val uncurried: (Int, Int) => Int = uncurry(add)
-  assert(uncurried(1, 1) == 2)
+  val uncurried: (String, String) => String = uncurry(add)
+  assert(uncurried("A", "B") == "AB")
 
 }
